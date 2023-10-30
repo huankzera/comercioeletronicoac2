@@ -1,4 +1,4 @@
--- Inserir dados na tabela Clientes com o mesmo domínio de e-mail para todos (@raffael.com)
+
 INSERT INTO Clientes (ID, Nome, Endereco_de_Entrega, Email, Celular) VALUES
 (1, 'Naruto Uzumaki', '123 Rua da Folha, Aldeia da Folha', 'naruto@natheus.com', 999999999),
 (2, 'Sakura Haruno', '456 Rua das Flores, Aldeia da Folha', 'sakura@natheus.com', 999999998),
