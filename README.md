@@ -122,8 +122,9 @@ DELIMITER ;
 
 Desenvolva uma stored procedure para calcular o total de um pedido com base nos produtos incluídos.
 
-DELIMITER $
 
+```SQL
+DELIMITER $
 CREATE PROCEDURE CalcularTotalPedido(
     IN pedido_id INT,
     OUT total DECIMAL(10, 2)
@@ -136,8 +137,9 @@ BEGIN
     WHERE i.PedidoID = pedido_id;
     
 END$
-
 DELIMITER ;
+```
+
 
 ![image](https://github.com/huankzera/comercioeletronicoac2/assets/126423433/e884a497-d926-4818-a698-e070c9d65fad)
 
