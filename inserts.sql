@@ -1,15 +1,15 @@
 -- Inserir dados na tabela Clientes com o mesmo domínio de e-mail para todos (@raffael.com)
 INSERT INTO Clientes (ID, Nome, Endereco_de_Entrega, Email, Celular) VALUES
-(1, 'Naruto Uzumaki', '123 Rua da Folha, Aldeia da Folha', 'naruto@raffael.com', 999999999),
-(2, 'Sakura Haruno', '456 Rua das Flores, Aldeia da Folha', 'sakura@raffael.com', 999999998),
-(3, 'Goku Son', '789 Kame House, Ilha de Kame', 'goku@raffael.com', 999999997),
-(4, 'Vegeta Prince', '1 Royal Street, Planeta Vegeta', 'vegeta@raffael.com', 999999996),
-(5, 'Natsu Dragneel', 'Fire Dragon Guild, Magnolia Town', 'natsu@raffael.com', 999999995),
-(6, 'Erza Scarlet', 'Fairy Tail Guild, Magnolia Town', 'erza@raffael.com', 999999994),
-(7, 'Monkey D. Luffy', 'Thousand Sunny, Grand Line', 'luffy@raffael.com', 999999993),
-(8, 'Saitama', 'Apt. 303, Z-City', 'saitama@raffael.com', 999999992),
-(9, 'Narancia Ghirga', 'Gang Passione Headquarters, Napoli', 'narancia@raffael.com', 999999991),
-(10, 'Todoroki Shoto', '1-A Classroom, U.A. High School', 'todoroki@raffael.com', 999999990);
+(1, 'Naruto Uzumaki', '123 Rua da Folha, Aldeia da Folha', 'naruto@natheus.com', 999999999),
+(2, 'Sakura Haruno', '456 Rua das Flores, Aldeia da Folha', 'sakura@natheus.com', 999999998),
+(3, 'Goku Son', '789 Kame House, Ilha de Kame', 'goku@matheus.com', 999999997),
+(4, 'Vegeta Prince', '1 Royal Street, Planeta Vegeta', 'vegeta@natheus.com', 999999996),
+(5, 'Natsu Dragneel', 'Fire Dragon Guild, Magnolia Town', 'natsu@huankzin.com', 999999995),
+(6, 'Erza Scarlet', 'Fairy Tail Guild, Magnolia Town', 'erza@huankzin', 999999994),
+(7, 'Monkey D. Luffy', 'Thousand Sunny, Grand Line', 'luffy@matheus.com', 999999993),
+(8, 'Saitama', 'Apt. 303, Z-City', 'saitama@matheuszin.com', 999999992),
+(9, 'Narancia Ghirga', 'Gang Passione Headquarters, Napoli', 'narancia@matheus.com', 999999991),
+(10, 'Todoroki Shoto', '1-A Classroom, U.A. High School', 'todoroki@natheus.com', 999999990);
 
 SELECT * FROM Clientes;
 
