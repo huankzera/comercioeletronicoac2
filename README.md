@@ -55,10 +55,27 @@ Itens de Pedido: Registre os produtos incluídos em cada pedido, junto com a qua
 ![image](https://github.com/huankzera/comercioeletronicoac2/assets/126423433/4f7bc993-6de7-4f21-9548-a7a9c0af3bf5)
 
 
-Relacionamentos:
-Crie um relacionamento entre "Pedidos" e "Clientes" para rastrear os pedidos de cada cliente.
-
-  
+### Criação da tabela Comercio Eletronico 
+## Codigo:
+```SQL
+-- MySQL Workbench Forward Engineering
+-- Tabela Produtos
+CREATE TABLE Produtos (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255),
+    Descricao TEXT,
+    Preco DECIMAL(10, 2),
+    Quantidade_Estoque INT
+);
+-- Tabela Clientes
+CREATE TABLE Clientes (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255),
+    Endereco_de_Entrega TEXT,
+    Email VARCHAR(255),
+    Celular INT 
+);
+-- Tabela Pedidos
 CREATE TABLE Pedidos (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     DataDoPedido DATE,
@@ -66,8 +83,6 @@ CREATE TABLE Pedidos (
     Status_Do_Pedido VARCHAR(50),
     FOREIGN KEY (ClienteID) REFERENCES Clientes(ID)
 );
-Estabeleça um relacionamento entre "Itens de Pedido" e "Produtos" para associar produtos a pedidos.
-
 -- Tabela ItensDePedido
 CREATE TABLE ItensDePedido (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -77,75 +92,14 @@ CREATE TABLE ItensDePedido (
     FOREIGN KEY (PedidoID) REFERENCES Pedidos(ID),
     FOREIGN KEY (ProdutoID) REFERENCES Produtos(ID)
 );
-
-
-
-Stored Procedures:
-Implemente uma stored procedure para permitir que os clientes adicionem produtos ao carrinho de compras.
-
-DELIMITER $
-
-CREATE PROCEDURE AdicionarProdutoAoCarrinho(
-    IN cliente_id INT,
-    IN produto_id INT,
-    IN quantidade INT
-)
-BEGIN
-    DECLARE pedido_id INT;
-    
-    -- Verificar se o cliente já tem um carrinho ativo
-    SELECT ID INTO pedido_id
-    FROM Pedidos
-    WHERE ClienteID = cliente_id AND Status_Do_Pedido = 'Carrinho';
-    
-    -- Se não houver um carrinho ativo, criar um novo
-    IF pedido_id IS NULL THEN
-        INSERT INTO Pedidos (ClienteID, DataDoPedido, Status_Do_Pedido)
-        VALUES (cliente_id, NOW(), 'Carrinho');
-        SET pedido_id = LAST_INSERT_ID();
-    END IF;
-    
-    -- Adicionar produto ao carrinho (tabela ItensDePedido)
-    INSERT INTO ItensDePedido (PedidoID, ProdutoID, Quantidade)
-    VALUES (pedido_id, produto_id, quantidade);
-    
-END$
-
-DELIMITER ;
-
-
-Stored Procedures:
-Implemente uma stored procedure para permitir que os clientes adicionem produtos ao carrinho de compras.
-
-DELIMITER $
-
-CREATE PROCEDURE AdicionarProdutoAoCarrinho(
-    IN cliente_id INT,
-    IN produto_id INT,
-    IN quantidade INT
-)
-BEGIN
-    DECLARE pedido_id INT;
-    
-    -- Verificar se o cliente já tem um carrinho ativo
-    SELECT ID INTO pedido_id
-    FROM Pedidos
-    WHERE ClienteID = cliente_id AND Status_Do_Pedido = 'Carrinho';
-    
-    -- Se não houver um carrinho ativo, criar um novo
-    IF pedido_id IS NULL THEN
-        INSERT INTO Pedidos (ClienteID, DataDoPedido, Status_Do_Pedido)
-        VALUES (cliente_id, NOW(), 'Carrinho');
-        SET pedido_id = LAST_INSERT_ID();
-    END IF;
-    
-    -- Adicionar produto ao carrinho (tabela ItensDePedido)
-    INSERT INTO ItensDePedido (PedidoID, ProdutoID, Quantidade)
-    VALUES (pedido_id, produto_id, quantidade);
-    
-END$
-
-DELIMITER ;
+SELECT * FROM Clientes;
+SELECT * FROM produtos;
+SELECT * FROM pedidos;
+DELETE FROM pedidos;
+SELECT * FROM itensdepedido;
+DELETE FROM itensdepedido;
+```
+Produtos: Armazene informações sobre produtos, como nome, descrição, preço e quantidade em estoque.
 
 Desenvolva uma stored procedure para calcular o total de um pedido com base nos produtos incluídos.
 
@@ -187,11 +141,15 @@ DELIMITER ;
 
 ![image](https://github.com/huankzera/comercioeletronicoac2/assets/126423433/e884a497-d926-4818-a698-e070c9d65fad)
 
+
 Implemente uma view que forneça uma lista de todos os produtos disponíveis.
+
+```SQL
 
 CREATE VIEW ProdutosDisponiveis AS
 SELECT ID, Nome, Descricao, Preco, Quantidade_Estoque
 FROM Produtos
 WHERE Quantidade_Estoque > 0;
 
+```
 
