@@ -1,57 +1,8 @@
-# comercioeletronicoac2
-
-
-
-
-CREATE TABLE Produtos (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Nome VARCHAR(255),
-    Descricao TEXT,
-    Preco DECIMAL(10, 2),
-    Quantidade_Estoque INT
-);
-
-
-
-
-CREATE TABLE Clientes (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Nome VARCHAR(255),
-    Endereco_de_Entrega TEXT,
-    Email VARCHAR(255),
-    Celular INT 
-);
-
-
-CREATE TABLE Pedidos (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    DataDoPedido DATE,
-    ClienteID INT,
-    Status_Do_Pedido VARCHAR(50),
-    FOREIGN KEY (ClienteID) REFERENCES Clientes(ID)
-);
-
-
-CREATE TABLE ItensDePedido (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    PedidoID INT,
-    ProdutoID INT,
-    Quantidade INT,
-    FOREIGN KEY (PedidoID) REFERENCES Pedidos(ID),
-    FOREIGN KEY (ProdutoID) REFERENCES Produtos(ID)
-);
-
-
-
-SELECT * FROM Clientes;
-SELECT * FROM produtos;
-SELECT * FROM pedidos;
-DELETE FROM pedidos;
-SELECT * FROM itensdepedido;
-DELETE FROM itensdepedido;
+### Criação da tabela Comercio Eletronico 
+## Codigo:
+```SQL
 -- MySQL Workbench Forward Engineering
-
-
+-- Tabela Produtos
 CREATE TABLE Produtos (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(255),
@@ -59,10 +10,7 @@ CREATE TABLE Produtos (
     Preco DECIMAL(10, 2),
     Quantidade_Estoque INT
 );
-
-
-
-
+-- Tabela Clientes
 CREATE TABLE Clientes (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(255),
@@ -70,8 +18,7 @@ CREATE TABLE Clientes (
     Email VARCHAR(255),
     Celular INT 
 );
-
-
+-- Tabela Pedidos
 CREATE TABLE Pedidos (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     DataDoPedido DATE,
@@ -79,8 +26,7 @@ CREATE TABLE Pedidos (
     Status_Do_Pedido VARCHAR(50),
     FOREIGN KEY (ClienteID) REFERENCES Clientes(ID)
 );
-
-
+-- Tabela ItensDePedido
 CREATE TABLE ItensDePedido (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     PedidoID INT,
@@ -89,15 +35,14 @@ CREATE TABLE ItensDePedido (
     FOREIGN KEY (PedidoID) REFERENCES Pedidos(ID),
     FOREIGN KEY (ProdutoID) REFERENCES Produtos(ID)
 );
-
-
-
 SELECT * FROM Clientes;
 SELECT * FROM produtos;
 SELECT * FROM pedidos;
 DELETE FROM pedidos;
 SELECT * FROM itensdepedido;
 DELETE FROM itensdepedido;
+```
+Produtos: Armazene informações sobre produtos, como nome, descrição, preço e quantidade em estoque.
 ![image](https://github.com/huankzera/comercioeletronicoac2/assets/126423433/c652a035-ef94-4b2a-ae69-eee6dfbe1303)
 
 Pedidos: Registre detalhes de pedidos, incluindo data, cliente e status.
